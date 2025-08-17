@@ -31,7 +31,7 @@ jobs:
           npx marge cypress/reports/mochawesome/mochawesome.json --reportDir cypress/reports/html
 
       - name: Upload relatório como artefato
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: relatorio-cypress
           path: cypress/reports/html
