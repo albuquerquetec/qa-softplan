@@ -15,7 +15,7 @@ A estrutura foi organizada com Page Objects e validação de contratos de API, a
 - npm **8+**
 
 ## Instalação
-Instalar as dependências:  
+- Instalar as dependências:  
 npm ci
 
 ## Como executar os testes
