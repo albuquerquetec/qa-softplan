@@ -36,14 +36,13 @@ export default defineConfig({
         const reportPath = path.join(__dirname, 'cypress/reports/mochawesome/index.html');
         console.log(`Relatório gerado em: ${reportPath}`);
 
-        // Só abre localmente (evita quebrar na pipeline)
         if (process.env.CI !== 'true') {
           if (process.platform === 'win32') {
-            exec(`start ${reportPath}`); // Windows
+            exec(`start ${reportPath}`);
           } else if (process.platform === 'darwin') {
-            exec(`open ${reportPath}`); // Mac
+            exec(`open ${reportPath}`);
           } else {
-            exec(`xdg-open ${reportPath}`); // Linux
+            exec(`xdg-open ${reportPath}`);
           }
         }
       });

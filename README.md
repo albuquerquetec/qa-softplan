@@ -1,51 +1,52 @@
 # QA Softplan – Automação com Cypress
 
-Projeto de testes automatizados (API + UI) utilizando Cypress com TypeScript, seguindo boas práticas de Page Objects, validação de contratos com AJV e relatórios HTML via Mochawesome.
+Este projeto contém a automação de testes para API e UI utilizando Cypress com TypeScript.  
+A estrutura foi organizada com Page Objects e validação de contratos de API, além de relatórios em HTML para facilitar a análise dos resultados.
 
-## Tech Stack
-- Cypress 13 + TypeScript
-- AJV / ajv-formats - validação de contratos de API
-- Faker - geração de massa de dados dinâmica
-- Cypress Mochawesome Reporter - relatórios em HTML
-- GitHub Actions (CI/CD – em breve)
+## Tecnologias utilizadas
+- **Cypress 13** + TypeScript  
+- **AJV** / ajv-formats → validação de contratos de API  
+- **Faker** → geração dinâmica de massa de dados  
+- **Cypress Mochawesome Reporter** → relatórios em HTML  
+- **GitHub Actions** (pipeline CI/CD – em implementação)  
 
 ## Pré-requisitos
-- Node.js 18+
-- npm 8+
+- Node.js **18+**  
+- npm **8+**
 
 ## Instalação
-Instalar dependências (sem alterar versões exatas):
+Instalar as dependências:  
 npm ci
 
-## Execução dos Testes
-UI Interativa
-npm run test:open
+## Como executar os testes
+- Abrir interface interativa:  
+  npm run test:open
 
-Headless (CI/CD ou local)
-npm run test:run
+- Execução headless:  
+  npm run test:run
 
-Headless (com navegador visível)
-npm run test:run:headed
+- Execução headless com navegador visível:  
+  npm run test:run:headed
 
-Gerar Relatório (executa testes e abre HTML automaticamente)
-npm run test:report
+- Gerar relatório (executa testes e abre o HTML automaticamente):  
+  npm run test:report
 
 ## Relatórios
-- Relatórios em: cypress/reports/html
-- Screenshots e vídeos (falhas): cypress/screenshots e cypress/videos
-- O relatório final em HTML abre automaticamente após npm run test:report
-- No dia a dia uso mais os screenshots de falhas para análise rápida, e deixo o relatório para acompanhamento geral.
-- O relatório atualizado dos testes pode ser acessado diretamente pelo GitHub Pages no link abaixo:
-  Acesse o Relatório de Testes - (https://albuquerquetec.github.io/qa-softplan/).
+- Local: `cypress/reports/mochawesome/`  
+- Evidências (falhas): `cypress/screenshots`  
+- O relatório em HTML é aberto automaticamente após rodar `npm run test:report`.  
+- Um relatório será gerado e ficará disponível online via GitHub Pages toda vez que a pipeline for executada. 
 
-## Convenções de Código
-- Page Objects - cypress/pages
-- Commands - cypress/support/commands.ts
-- Factories - cypress/support/factories
-- Schemas JSON - cypress/e2e/api/contratos
-- Nada de cy.log ou comentários desnecessários
-- Artefatos e relatórios não são versionados
+## Estrutura e convenções
+- **Page Objects:** `cypress/pages`  
+- **Commands customizados:** `cypress/support/commands.ts`  
+- **Factories:** `cypress/support/factories`  
+- **Contratos de API:** `cypress/e2e/api/contratos`  
 
-## CI/CD (em breve)
-- Pipeline no GitHub Actions para executar testes (API e UI) e publicar relatórios como artefatos.
-- A ideia é rodar por tipo de teste (API separado de UI) e manter os relatórios disponíveis no histórico do pipeline.
+## CI/CD
+- O projeto já conta com pipeline no GitHub Actions, responsável por:
+  - Executar os testes automatizados (API e UI).
+  - Gerar os relatórios em HTML com o Mochawesome.
+  - Publicar automaticamente o relatório mais recente no GitHub Pages, disponível em:
+    [Relatório de Testes](https://albuquerquetec.github.io/qa-softplan/).
+- Os relatórios antigos ficam armazenados como artefatos no histórico do pipeline, permitindo acompanhamento e auditoria dos testes. 

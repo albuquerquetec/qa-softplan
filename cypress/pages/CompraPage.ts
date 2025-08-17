@@ -1,6 +1,4 @@
 export class CompraPage {
-  visit() { cy.visit('/minhaListaDeProdutos'); }
-
   get detalheProduto() { return cy.get('[href="/detalhesProduto/K6leHdftCeOJj8BJ"] > .card-link'); }
   get addProduto() { return cy.get('[data-testid="adicionarNaLista"]'); }
   get addCarrinho() { return cy.get('[data-testid="adicionar carrinho"]'); }
