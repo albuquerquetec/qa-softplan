@@ -26,19 +26,14 @@ jobs:
       - name: Rodar testes Cypress
         run: npx cypress run
 
-      - name: Gerar relatório Mochawesome
-        run: |
-          npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/mochawesome.json
-          npx marge cypress/reports/mochawesome/mochawesome.json --reportDir cypress/reports/html
-
       - name: Upload relatório como artefato
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-cypress
-          path: cypress/reports/html
+          path: cypress/reports/mochawesome
 
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: cypress/reports/html
+          publish_dir: cypress/reports/mochawesome
