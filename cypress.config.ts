@@ -3,6 +3,7 @@ import { env as localEnv } from './cypress/utils/env';
 import { beforeRunHook, afterRunHook } from 'cypress-mochawesome-reporter/lib';
 import fs from 'fs-extra';
 import path from 'path';
+import { exec } from 'child_process';
 
 function deleteFolder(folderPath: string) {
   if (fs.existsSync(folderPath)) {
@@ -32,8 +33,19 @@ export default defineConfig({
         console.log('Gerando relatório HTML...');
         await afterRunHook();
 
-        const reportPath = path.join(__dirname, 'cypress/reports/html/index.html');
+        const reportPath = path.join(__dirname, 'cypress/reports/mochawesome/index.html');
         console.log(`Relatório gerado em: ${reportPath}`);
+
+        // Só abre localmente (evita quebrar na pipeline)
+        if (process.env.CI !== 'true') {
+          if (process.platform === 'win32') {
+            exec(`start ${reportPath}`); // Windows
+          } else if (process.platform === 'darwin') {
+            exec(`open ${reportPath}`); // Mac
+          } else {
+            exec(`xdg-open ${reportPath}`); // Linux
+          }
+        }
       });
 
       return config;
@@ -42,7 +54,7 @@ export default defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     reportPageTitle: 'Relatório de Testes',
-    reportDir: 'cypress/reports/html',
+    reportDir: 'cypress/reports/mochawesome',
     overwrite: false,
     html: true,
     json: true,

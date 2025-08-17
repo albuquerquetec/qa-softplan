@@ -7,7 +7,7 @@
     "test:open": "cypress open",
     "test:run": "cypress run",
     "test:run:headed": "cypress run --headed",
-    "test:report": "cypress run && npx open-cli cypress/reports/html/index.html"
+    "test:report": "cypress run && npx open-cli cypress/reports/mochawesome/index.html"
   },
   "keywords": [
     "cypress",
