@@ -36,7 +36,7 @@ npm run test:report
 - O relatório final em HTML abre automaticamente após npm run test:report
 - No dia a dia uso mais os screenshots de falhas para análise rápida, e deixo o relatório para acompanhamento geral.
 - O relatório atualizado dos testes pode ser acessado diretamente pelo GitHub Pages no link abaixo:
-  Acesse o Relatório de Testes - (https://albuquerquetec.github.io/qa-softplan/)
+  Acesse o Relatório de Testes - (https://albuquerquetec.github.io/qa-softplan/).
 
 ## Convenções de Código
 - Page Objects - cypress/pages
