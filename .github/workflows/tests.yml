@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Rodar testes Cypress
-        run: npx cypress run --reporter mochawesome --reporter-options overwrite=false,html=true,json=true --reporter-options reportDir=cypress/reports/mochawesome
+        run: npx cypress run --reporter mochawesome --reporter-options overwrite=false,html=true,json=false --reporter-options reportDir=cypress/reports/mochawesome
 
     #   - name: Gerar relatório Mochawesome
     #     run: |
