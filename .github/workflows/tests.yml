@@ -23,12 +23,12 @@ jobs:
         run: npm install
 
       - name: Rodar testes Cypress
-        run: npx cypress run --reporter mochawesome --reporter-options overwrite=false,html=false,json=true --reporter-options reportDir=cypress/reports/mochawesome
+        run: npx cypress run --reporter mochawesome --reporter-options overwrite=false,html=true,json=true --reporter-options reportDir=cypress/reports/mochawesome
 
-      - name: Gerar relatório Mochawesome
-        run: |
-          npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/mochawesome.json
-          npx marge cypress/reports/mochawesome/mochawesome.json --reportDir cypress/reports/html
+    #   - name: Gerar relatório Mochawesome
+    #     run: |
+    #       npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/mochawesome.json
+    #       npx marge cypress/reports/mochawesome/mochawesome.json --reportDir cypress/reports/html
 
       - name: Upload relatório como artefato
         uses: actions/upload-artifact@v4
